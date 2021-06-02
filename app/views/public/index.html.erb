@@ -25,20 +25,25 @@
   </div>
   <div class="row">
     <div class="col-8">
-      Left col (wide)
+      <%= @posts.each do |post| %>
+      <div class="card">
+        <h4><%= link_to post.title, community_post_path(post.community_id, post) %></h4>
+        <p><%= truncate post.body, length: 200 %></p>
+      </div>
+      <% end %>
     </div>
     <div class="col-4">
       <p class="h5 mb-4"> Up and coming Communities</p>
+      
+      <div class="card" >
+        <ul class="list-group list-group-flush">
+          <% @communities.each do |community| %>
+            <li class="list-group-item"><%= community.name %></li>
+          <% end %> 
+        </ul>
+      </div>
     
-    <div class="card" >
-      <ul class="list-group list-group-flush">
-        <li class="list-group-item">An item</li>
-        <li class="list-group-item">A second item</li>
-        <li class="list-group-item">A third item</li>
-      </ul>
-    </div>
-    
-    <%= link_to "View all", communities_path, class: "btn btn-primary mt-3" %>
+      <%= link_to "View all", communities_path, class: "btn btn-primary mt-3" %>
     </div>
   </div>
 </div>
