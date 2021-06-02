@@ -11,7 +11,7 @@
     
     def new
       @community = Community.find(params[:community_id])
-      @posts = Post.new
+      @post = Post.new
     end
   
   

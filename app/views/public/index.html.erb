@@ -23,14 +23,17 @@
       <p class="h5"> Popular Posts </p>
     </div>
   </div>
+  
   <div class="row">
     <div class="col-8">
+    
       <%= @posts.each do |post| %>
       <div class="card">
         <h4><%= link_to post.title, community_post_path(post.community_id, post) %></h4>
         <p><%= truncate post.body, length: 200 %></p>
       </div>
       <% end %>
+
     </div>
     <div class="col-4">
       <p class="h5 mb-4"> Up and coming Communities</p>
@@ -38,7 +41,7 @@
       <div class="card" >
         <ul class="list-group list-group-flush">
           <% @communities.each do |community| %>
-            <li class="list-group-item"><%= community.name %></li>
+            <li class="list-group-item"><%=link_to community.name, community_path(community) %></li>
           <% end %> 
         </ul>
       </div>
